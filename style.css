@@ -364,3 +364,8 @@ button:disabled {
     height: 50px;
 }
 
+.subtask_value{
+    display: flex;
+    justify-content: space-between;
+}
+

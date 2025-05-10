@@ -1,8 +1,9 @@
 let title = document.getElementById('title')
 let description = document.getElementById('description')
-let date = document.getElementById('date')
-let category = ""
+let date = "";
+let category = "";
 let priority = "medium";
+let subtask = [];
 
 function initTask() {
     getFromLocalStorage()
@@ -16,7 +17,8 @@ function highlightLink() {
 function addSubtask() {
     let subtaskRef = document.getElementById('subtask_input')
     let subtaskContent = document.getElementById('subtask')
-    subtaskContent.innerHTML += `- ` + subtaskRef.value + `<br>`
+    subtaskContent.innerHTML += `<li><span>${subtaskRef.value}</span><span onclick="deleteSubtask">X</span></li>`
+    subtask.push(subtaskRef.value)
     subtaskRef.value = ""
 };
 
@@ -37,4 +39,8 @@ function selectedPrio(prio) {
 function selectedCategory() {
     let selectCategory = document.getElementById('category')
     category = selectCategory.options[selectCategory.selectedIndex].text
+}
+
+function selectedDate() {
+    date = document.getElementById("date").value;
 }

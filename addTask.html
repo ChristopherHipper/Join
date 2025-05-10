@@ -30,8 +30,7 @@
                         <label for="description">Description</label>
                         <textarea placeholder="Enter a description" name="description" id="description"></textarea>
                         <label for="due_Date">Due Date</label>
-                        <input id="date" name="due_Date" required placeholder="dd/mm/yyyy" type="date">
-
+                        <input onchange="selectedDate()" id="date" name="due_Date" required placeholder="dd/mm/yyyy" type="date">
                     </div>
                     <div class="add_task_seperator"></div>
                     <div class="add_task_left_side">
@@ -43,12 +42,12 @@
                         </div>
                         <label for="assigned_to">Assigned to</label>
                         <select id="assigned_to" name="assigned_to">
-                            <option disabled selected hidden value="select_contact">Select contacts to assign</option>
+                            <option disabled selected hidden value="">Select contacts to assign</option>
 
                         </select>
                         <label for="category">Category</label>
                         <select id="category" onchange="selectedCategory()" required id="category" name="category">
-                            <option disabled selected hidden value="select_category">Select task category</option>
+                            <option value="" disabled selected hidden >Select task category</option>
                             <option value="technical_task">Technical Task</option>
                             <option value="user_story">User Story</option>
                         </select>
@@ -57,7 +56,7 @@
                             <input id="subtask_input" name="subtask" placeholder="Add new subtask" type="text">
                             <span onclick="addSubtask()" class="add">+</span>
                         </div>
-                        <div id="subtask"></div>
+                        <ul id="subtask"></ul>
                         <button>Add Task</button>
                     </div>
                 </form>
