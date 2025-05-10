@@ -1,0 +1,28 @@
+.form_header{
+    display: flex;
+    align-items: center;
+    background-color: white;
+    position: relative;
+}
+
+.form_header a{
+    background-color: white;
+}
+.back_img{
+    background-color: white;
+    height: 30px;
+}
+
+.back_to_log_in{
+    position: absolute;
+    left: -130px;
+    top: 17px;
+}
+
+.checkbox{
+    width: 20px;
+    position: absolute;
+    top: 366px;
+    left: 570px;
+    cursor: pointer;
+}

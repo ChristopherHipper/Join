@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./styles/standard.css">
+    <link rel="stylesheet" href="./styles/assets.css">
+    <script src="./script.js"></script>
+    <script src="./scripts/data.js"></script>
+    <script src="./scripts/logIn.js"></script>
+</head>
+
+<body onload="init(), onloadFunc()">
+    <div id="loader" class="loader">
+        <img class="loader_logo" src="./assets/img/logo.png" alt="">
+    </div>
+    <header>
+        <img class="logo" src="./assets/img/logo.png" alt="">
+        <a href="./sign_up.html"><button>Sign up</button></a>
+        
+    </header>
+
+    <main>
+
+        <form class="log_and_sign_form" onsubmit="logIn(); return false">
+            <h1>Log in</h1>
+            <div class="seperator"></div>
+            
+            <input onkeydown="ableBtn()" id="email" required placeholder="Email" type="email">
+            <div class="password_container">
+                <input onkeyup="ableBtn()" id="password" required placeholder="Password" type="password">
+                <input onclick="showPassword()" class="checkbox" placeholder="Password" type="checkbox">
+            </div>
+            <span id="warning" class="warning d_none">Wrong E-Mail or Password. Please check your Log in information's!</span>
+            <div class="btn_container">
+                <button onkeyup="ableBtn()" disabled id="log_in">Log in </button>
+                <button onclick="guestLogIn()" class="guest_button"> Guest Log in</button>
+            </div>
+        </form>
+    </main>
+    <footer>
+        <div class="footer_content max_width">
+            <a href="">Privacy Policy</a>
+            <a href="">Legal notice</a>
+        </div>
+    </footer>
+</body>
+
+</html>

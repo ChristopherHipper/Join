@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Board</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./styles/standard.css">
+    <script src="./script.js"></script>
+    <script src="./scripts/data.js"></script>
+    <script src="./scripts/board.js"></script>
+    <script src="./templates/header.js"></script>
+    <script src="./templates/sidebar.js"></script>
+</head>
+
+<body onload="renderSidebar(),renderTasks(),onloadFunc(),renderHeader()">
+    <div class="content">
+        <div id="sidebar"></div>
+
+        <div class="content_container">
+           <div id="header"></div>
+            <div class="tasks_main_container">
+                <div class="tasks-container">
+                    to do
+                    <div id="to-do" class="tasks_content" ondrop="moveTo('toDo')" ondragover="dragoverHandler(event)">
+                    </div>
+                </div>
+                <div class="tasks-container">
+                    in progress
+                    <div id="in-progress" class="tasks_content" ondrop="moveTo('inProgress')"
+                        ondragover="dragoverHandler(event)">
+                    </div>
+                </div>
+                <div class="tasks-container">
+                    await feedback
+                    <div id="await" class="tasks_content" ondrop="moveTo('await')" ondragover="dragoverHandler(event)">
+                    </div>
+                </div>
+                <div class="tasks-container">
+                    done
+                    <div id="done" class="tasks_content" ondrop="moveTo('done')" ondragover="dragoverHandler(event)">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

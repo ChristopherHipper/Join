@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Task</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./styles/standard.css">
+    <link rel="stylesheet" href="./styles/assets.css">
+    <script src="./script.js"></script>
+    <script src="./scripts/data.js"></script>
+    <script src="./scripts/addTask.js"></script>
+    <script src="./templates/header.js"></script>
+    <script src="./templates/sidebar.js"></script>
+</head>
+
+<body onload="renderSidebar(), initTask(), onloadFunc(),  renderHeader()">
+    <div class="content">
+        <div id="sidebar"></div>
+
+        <div class="content_container">
+            <div id="header"></div>
+            <div class="summary_container">
+                <h1 class="headline_add_task">Add Task</h1>
+                <form class="add_task_form">
+                    <div class="add_task_left_side">
+                        <label for="title">Title</label>
+                        <input name="title" required placeholder="Enter a title" type="text">
+                        <label for="description">Description</label>
+                        <textarea placeholder="Enter a description" name="description" id="description"></textarea>
+                        <label for="due_Date">Due Date</label>
+                        <input name="due_Date" required placeholder="dd/mm/yyyy" type="date">
+
+                    </div>
+                    <div class="add_task_seperator"></div>
+                    <div class="add_task_left_side">
+                        <span>Prio</span>
+                        <div>
+                            <button>Urgent</button>
+                            <button>Medium</button>
+                            <button>Low</button>
+                        </div>
+                        <label for="assigned_to">Assigned to</label>
+                        <select id="assigned_to" name="assigned_to">
+                            <option disabled selected hidden value="select_contact">Select contacts to assign</option>
+
+                        </select>
+                        <label for="category">Category</label>
+                        <select required id="category" name="category">
+                            <option disabled selected hidden value="select_category">Select task category</option>
+                            <option value="technical_task">Technical Task</option>
+                            <option value="user_story">User Story</option>
+                        </select>
+                        <label for="subtask">Add new subtask</label>
+                        <div class="subtask_container">
+                            <input id="subtask_input" name="subtask" placeholder="Add new subtask" type="text">
+                            <span onclick="addSubtask()" class="add">+</span>
+                        </div>
+                        <div id="subtask"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
