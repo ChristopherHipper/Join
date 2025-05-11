@@ -19,27 +19,33 @@
         <div id="sidebar"></div>
 
         <div class="content_container">
-           <div id="header"></div>
-            <div class="tasks_main_container">
-                <div class="tasks-container">
-                    to do
-                    <div id="to-do" class="tasks_content" ondrop="moveTo('toDo')" ondragover="dragoverHandler(event)">
+            <div id="header"></div>
+            <div class="summary_container">
+                <h1 class="headline_add_task">Board</h1>
+                <div class="board_content">
+                    <div class="tasks-container">
+                        <h2>To do </h2>
+                        <div id="to-do" class="tasks_content" ondrop="moveTo('toDo')"
+                            ondragover="dragoverHandler(event)">
+                        </div>
                     </div>
-                </div>
-                <div class="tasks-container">
-                    in progress
-                    <div id="in-progress" class="tasks_content" ondrop="moveTo('inProgress')"
-                        ondragover="dragoverHandler(event)">
+                    <div class="tasks-container">
+                        <h2>In progress</h2>
+                        <div id="in-progress" class="tasks_content" ondrop="moveTo('inProgress')"
+                            ondragover="dragoverHandler(event)">
+                        </div>
                     </div>
-                </div>
-                <div class="tasks-container">
-                    await feedback
-                    <div id="await" class="tasks_content" ondrop="moveTo('await')" ondragover="dragoverHandler(event)">
+                    <div class="tasks-container">
+                        <h2>Await feedback</h2>
+                        <div id="await" class="tasks_content" ondrop="moveTo('await')"
+                            ondragover="dragoverHandler(event)">
+                        </div>
                     </div>
-                </div>
-                <div class="tasks-container">
-                    done
-                    <div id="done" class="tasks_content" ondrop="moveTo('done')" ondragover="dragoverHandler(event)">
+                    <div class="tasks-container">
+                        <h2>Done</h2>
+                        <div id="done" class="tasks_content" ondrop="moveTo('done')"
+                            ondragover="dragoverHandler(event)">
+                        </div>
                     </div>
                 </div>
             </div>

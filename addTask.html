@@ -29,12 +29,12 @@
                         <input id="title" name="title" required placeholder="Enter a title" type="text">
                         <label for="description">Description</label>
                         <textarea placeholder="Enter a description" name="description" id="description"></textarea>
-                        <label for="due_Date">Due Date</label>
+                        <label for="date">Due Date</label>
                         <input onchange="selectedDate()" id="date" name="due_Date" required placeholder="dd/mm/yyyy" type="date">
                     </div>
                     <div class="add_task_seperator"></div>
                     <div class="add_task_left_side">
-                        <label for="">Prio</label>
+                        <label>Prio</label>
                         <div class="prio_btn_container">
                             <span class="prio_btn" onclick="selectedPrio('urgent')">Urgent</span>
                             <span class="prio_btn" onclick="selectedPrio('medium')">Medium</span>
@@ -51,7 +51,7 @@
                             <option value="technical_task">Technical Task</option>
                             <option value="user_story">User Story</option>
                         </select>
-                        <label for="subtask">Add new subtask</label>
+                        <label>Add new subtask</label>
                         <div class="subtask_container">
                             <input maxlength="15" id="subtask_input" name="subtask" placeholder="Add new subtask" type="text">
                             <span onclick="addSubtask()" class="add">+</span>

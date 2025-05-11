@@ -399,3 +399,25 @@ button:disabled {
 .add_Task_btn{
     width: 150px;
 }
+
+.board_content{
+    display: flex;
+    justify-content: space-between;
+    margin-right: 50px;
+}
+
+.tasks_content{
+    height: 500px;
+}
+
+.tasks-container{
+    margin-right: 50px;
+}
+
+.task_card{
+    background-color: white;
+    margin-top: 12px;
+    padding: 24px;
+    border-radius: 12px;
+    width: 150px;
+}

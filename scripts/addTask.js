@@ -74,6 +74,7 @@ async function addTask() {
                 "category": category,
                 "priority": priority,
                 "subtask": subtask,
+                "status" : "toDo"
             })
     });
     return response.json()
