@@ -16,11 +16,18 @@ function highlightLink() {
 
 function addSubtask() {
     let subtaskRef = document.getElementById('subtask_input')
-    let subtaskContent = document.getElementById('subtask')
-    subtaskContent.innerHTML += `<li><span>${subtaskRef.value}</span><span onclick="deleteSubtask">X</span></li>`
     subtask.push(subtaskRef.value)
     subtaskRef.value = ""
+    renderSubtasks()
 };
+
+function renderSubtasks() {
+    let subtaskContent = document.getElementById('subtask')
+    subtaskContent.innerHTML = "";
+        for (let index = 0; index < subtask.length; index++) {
+        subtaskContent.innerHTML += `<li><div class="single_subtask">${subtask[index]}<span class="delet_subtask" onclick="deleteSubtask('${subtask[index]}')">X</span></div></li>`
+    }
+}
 
 function selectedPrio(prio) {
     priority = "";
@@ -43,4 +50,10 @@ function selectedCategory() {
 
 function selectedDate() {
     date = document.getElementById("date").value;
+}
+
+function deleteSubtask(content) {
+    const contentIndex = subtask.indexOf(content)
+    subtask.splice(contentIndex, 1)
+    renderSubtasks()
 }

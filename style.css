@@ -385,3 +385,13 @@ button:disabled {
     justify-content: space-between;
 }
 
+.single_subtask{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 50px;
+    margin-bottom: 12px;
+}
+
+.delet_subtask{
+    cursor: pointer;
+}
