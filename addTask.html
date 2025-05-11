@@ -23,7 +23,7 @@
             <div id="header"></div>
             <div class="summary_container">
                 <h1 class="headline_add_task">Add Task</h1>
-                <form class="add_task_form">
+                <form onsubmit="addTask()" class="add_task_form">
                     <div class="add_task_left_side">
                         <label for="title">Title</label>
                         <input id="title" name="title" required placeholder="Enter a title" type="text">
@@ -57,7 +57,7 @@
                             <span onclick="addSubtask()" class="add">+</span>
                         </div>
                         <ul id="subtask"></ul>
-                        <button>Add Task</button>
+                        <button class="add_Task_btn">Add Task</button>
                     </div>
                 </form>
             </div>
