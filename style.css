@@ -97,7 +97,23 @@ h1{
 .checkbox{
     width: 20px;
     position: absolute;
-    top: 300px;
+    top: 365px;
+    left: 570px;
+    cursor: pointer;
+}
+
+.checkbox_first{
+    width: 20px;
+    position: absolute;
+    top: 365px;
+    left: 570px;
+    cursor: pointer;
+}
+
+.checkbox_second{
+    width: 20px;
+    position: absolute;
+    top: 430px;
     left: 570px;
     cursor: pointer;
 }

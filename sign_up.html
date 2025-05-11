@@ -23,7 +23,8 @@
 
         <form class="log_and_sign_form" onsubmit="signUp(); return false">
             <div class="form_header">
-                <a class="back_to_log_in" href="./index.html"><img class="back_img" src="./assets/img/arrow.png" alt=""></a>
+                <a class="back_to_log_in" href="./index.html"><img class="back_img" src="./assets/img/arrow.png"
+                        alt=""></a>
                 <h1>Sign up</h1>
             </div>
             <div class="seperator"></div>
@@ -31,10 +32,16 @@
             <input id="email" required placeholder="Email" type="email">
             <div class="password_container">
                 <input id="password" required placeholder="Password" type="password">
-                <input onclick="showPassword()" class="checkbox" placeholder="Password" type="checkbox">
+                <input onclick="showPassword()" class="checkbox_first" placeholder="" type="checkbox">
             </div>
+            <div class="password_container">
+                <input id="confirm_password" required placeholder="confirm Password" type="password">
+                <input onclick="showConfirmPassword()" class="checkbox_second" placeholder="" type="checkbox">
+            </div>
+            <span id="warning" class="warning d_none">Wrong E-Mail or Password. Please check your Log in information's!</span>
             <button id="register_button">Sign Up</button>
-            <div id="success_registration" class="success_registration d_none">Du hast dich erfolgreich Registriert <br> Du wirst automatisch weiter geleitet</div>
+            <div id="success_registration" class="success_registration d_none">Du hast dich erfolgreich Registriert <br>
+                Du wirst automatisch weiter geleitet</div>
         </form>
     </main>
     <footer>
