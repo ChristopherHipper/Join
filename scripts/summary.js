@@ -1,19 +1,20 @@
-function init() {
+async function init() {
     getFromLocalStorage()
+    await onloadTasks()
     let allTasks = document.getElementById('tasks_in_board')
-    allTasks.innerHTML = "Tasks in Board:" + " " + tasks.length
+    allTasks.innerHTML = "Tasks in Board:" + " " + tasks[0].length
     let toDoes = document.getElementById('current_to_does')
-    currentToDoes = tasks.filter((i) => i.category == "toDo")
+    currentToDoes = tasks[0].filter((i) => i.status == "toDo")
     toDoes.innerHTML = "To-Do:" + " " + currentToDoes.length
     let done = document.getElementById('done')
-    currentDone = tasks.filter((i) => i.category == "done")
+    currentDone = tasks[0].filter((i) => i.status == "done")
     done.innerHTML = "Done:" + " " + currentDone.length
     let inProgress = document.getElementById('tasks_in_progress')
-    currentInProgress = tasks.filter((i) => i.category == "inProgress")
+    currentInProgress = tasks[0].filter((i) => i.status == "inProgress")
     inProgress.innerHTML = "Tasks in Progress:" + " " + currentInProgress.length
-    let await = document.getElementById('awaiting_feedback')
-    currentAwait = tasks.filter((i) => i.category == "await")
-    await.innerHTML = "Awaiting Feedback:" + " " + currentAwait.length
+    let awaitFeedback = document.getElementById('awaiting_feedback')
+    currentAwait = tasks[0].filter((i) => i.status == "await")
+    awaitFeedback.innerHTML = "Awaiting Feedback:" + " " + currentAwait.length
     greeting();
     highlightLink()
 }
