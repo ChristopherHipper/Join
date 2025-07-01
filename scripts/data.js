@@ -1,2 +1,0 @@
-let users = [];
-let currentUser;
