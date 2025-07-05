@@ -35,6 +35,7 @@ function openTaskOverlay(taskIndex, event) {
     loadTaskOverlayData(taskIndex);
     document.getElementById("cardOverlay").classList.add("openCardOverlay");
     event.stopPropagation();
+    setIOSPaddingIfNeeded()
 }
 
 /**
@@ -328,4 +329,21 @@ function finalizeAddTaskSetup() {
     getContacts();
     isAddTaskOverlayOpen = true;
     initValidation();
+}
+
+function isRealIOS() {
+  const ua = navigator.userAgent || navigator.vendor || window.opera;
+  const isiOS = /iPad|iPhone|iPod/.test(ua);
+  const isNotMac = !/Macintosh/.test(ua);
+  const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  return isiOS && isTouch && isNotMac;
+}
+
+function setIOSPaddingIfNeeded() {
+  if (isRealIOS()) {
+    const el = document.querySelector('.cardOverlay');
+    if (el) {
+      el.style.paddingBottom = '80px';
+    }
+  }
 }

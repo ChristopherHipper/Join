@@ -194,3 +194,19 @@ function contactAddedSuccessfully() {
     feedbackEl.classList.add("hidden");
   }, 4000);
 }
+
+function isRealIOS() {
+  const ua = navigator.userAgent;
+  const isIOS = /iPhone|iPad|iPod/.test(ua);
+  const isTouch = 'ontouchstart' in window;
+  const isNotMac = !/Macintosh/.test(ua);
+
+  return isIOS && isTouch && isNotMac;
+}
+
+if (isRealIOS()) {
+  const el = document.querySelector('.contacts-list');
+  if (el) {
+    el.style.paddingBottom = '80px';
+  }
+}
