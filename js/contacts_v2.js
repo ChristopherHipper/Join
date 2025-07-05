@@ -196,12 +196,11 @@ function contactAddedSuccessfully() {
 }
 
 function isRealIOS() {
-  const ua = navigator.userAgent;
-  const isIOS = /iPhone|iPad|iPod/.test(ua);
-  const isTouch = 'ontouchstart' in window;
+  const ua = navigator.userAgent || navigator.vendor || window.opera;
+  const isiOS = /iPad|iPhone|iPod/.test(ua);
   const isNotMac = !/Macintosh/.test(ua);
-
-  return isIOS && isTouch && isNotMac;
+  const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  return isiOS && isTouch && isNotMac;
 }
 
 if (isRealIOS()) {
