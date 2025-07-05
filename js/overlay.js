@@ -46,7 +46,8 @@ function openTaskOverlay(taskIndex, event) {
 function getAssignedToNames(taskIndex, contacts) {
     let searchWord = Object.entries(document.getElementsByClassName("assignedToOverlay"))[0][1].children;
     for (let index = 0; index < searchWord.length; index++) {
-        let assignedToNamesIndex = contacts.findIndex(v => getInitialsOverlay(v.name) === searchWord[index].innerText);
+        let initialsToCompare = searchWord[index].innerText.trim().toUpperCase();
+        let assignedToNamesIndex = contacts.findIndex(v => getInitialsOverlay(v.name).toUpperCase() === initialsToCompare);
         let assignedToName = "";
         editAssignedToName(assignedToNamesIndex, assignedToName, searchWord, index, contacts);
     }
