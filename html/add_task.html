@@ -88,13 +88,17 @@
                         </div>
                     </div>
                     <article class="flex-column">
-                        <label for="category">Category<span>*</span></label>
-                        <select onfocusout="checkCategory()" id="category" name="selection-category" class="input-text"
-                            required>
-                            <option value="" disabled selected hidden>Select task category</option>
-                            <option value="Technical Task">Technical Task</option>
-                            <option value="User Story">User Story</option>
-                        </select>
+                        <label>Category<span>*</span></label>
+                        <div class="subtask-container category-container" id="category">
+                            Select Task Category
+                            <div class="dropdown-img-container">
+                                <img class="category-img" id="dropwdown-icon" src="../assets/icons/dropdown-closed.png" alt="">
+                            </div>
+                        </div>
+                        <div class="">
+                            <ul>>Technical Task</ul>
+                            <ul>>User Story</ul>
+                        </div>
                         <div class="warning-container">
                             <span class="warning d_none" id="warning-category">This field is required</span>
                         </div>

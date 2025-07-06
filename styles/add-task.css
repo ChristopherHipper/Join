@@ -16,6 +16,16 @@ header {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
 }
 
+.category-container {
+  cursor: pointer;
+  justify-content: space-between;
+}
+
+.category-img {
+  width: 9px !important;
+  height: 6px !important;
+}
+
 .form p,
 label {
   font-size: 20px;
@@ -229,6 +239,10 @@ textarea {
   width: 24px;
 }
 
+.input-subtask::placeholder {
+  color: black;
+}
+
 .dropdown-img-container {
   display: flex;
   justify-content: center;
@@ -240,12 +254,12 @@ textarea {
 }
 
 .dropdown-img-container img {
-  width: 8.21px;
-  height: 5.6px;
+  width: 10px;
+  height: 6.6px;
 }
 
-.formBoard{
-    height: 620px;
+.formBoard {
+  height: 620px;
 }
 
 .selectable-assigned {
@@ -458,16 +472,16 @@ li {
   gap: 6px;
 }
 
-.subtaskList{
+.subtaskList {
   max-height: 150px;
   overflow-x: auto;
 }
 
-.subtaskListBoard{
+.subtaskListBoard {
   height: 150px;
 }
 
-.moreMembers{
+.moreMembers {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -480,7 +494,7 @@ li {
   font-size: 18px;
 }
 
-.subtaskListEdit{
+.subtaskListEdit {
   max-height: 100px;
 }
 
@@ -489,11 +503,11 @@ li {
   .success-container {
     justify-content: center;
     align-items: center;
-}
+  }
 
   .success-massage {
-  position: unset;
-}
+    position: unset;
+  }
 
   .add-task-style {
     position: static;
@@ -510,7 +524,7 @@ li {
     display: none;
   }
 
-  .formBoard{
+  .formBoard {
     height: unset;
   }
 
@@ -566,15 +580,15 @@ li {
 @media (max-width: 490px) {
 
   .success-massage {
-  font-size: 18px;
-  padding: 26px;
-}
+    font-size: 18px;
+    padding: 26px;
+  }
 
   .second-container {
     width: auto;
   }
 
-  .selectable{
+  .selectable {
     gap: 2px;
     padding: 0;
   }
@@ -619,6 +633,6 @@ li {
 
 
   .dropdown-img-container {
-  margin-left: 0;
-}
+    margin-left: 0;
+  }
 }
