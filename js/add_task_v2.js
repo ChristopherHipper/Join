@@ -155,6 +155,7 @@ document.addEventListener('click', e => {
     let assignedRef = document.getElementById('assigned');
     if (!assignedRef.contains(e.target) && e.target !== assignInput) {
         assignedRef.classList.add('dnone');
+        document.getElementById('dropwdown-icon').src = `../assets/icons/dropdown-closed.png`
     };
 });
 
