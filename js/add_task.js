@@ -3,6 +3,8 @@ const submitButton = document.getElementById("creatTask");
 let assignedMembers = [];
 dueDate.min = new Date().toISOString().split("T")[0];
 let subtaskArr = [];
+let isCategorySelected = false;
+let validationInterval = null;
 
 /**
  * Initializes the form view on page load.
@@ -17,6 +19,7 @@ function startForm() {
     addCss('medium');
     fetchInit();
     highlightLink();
+    initValidation()
 };
 
 /**
@@ -43,6 +46,7 @@ function addNewToDO() {
     pushTask(title, description, dueDate, category, priority);
     cancelTask();
     succeedRegistration();
+    stopValidation();
     const Timeout = setTimeout(fowarding, 2000);
 };
 
@@ -173,16 +177,17 @@ function addImageMedium(id) {
  */
 function addSubtask() {
     subtask = document.getElementById("subtask");
-    subtask.addEventListener("keypress", function(event) {
-    if (event.key === "Enter") {
-      event.preventDefault();
-      document.getElementById("subtask-add-btn").click();
-    }
-  });
+    subtask.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            document.getElementById("subtask-add-btn").click();
+        }
+    });
     if (subtask.value.trim()) {
         subtaskArr.push(subtask.value);
         renderSubtasks();
-        subtask.value = "";}
+        subtask.value = "";
+    }
     checkSubtask();
 };
 
@@ -223,20 +228,13 @@ function getSubTasks() {
  * defines a `checkInputs()` function that ables the submit button
  * if the values aren't empty
  */
-document.addEventListener("DOMContentLoaded", function () {
+function checkInputs() {
     const title = document.getElementById("title");
     const dueDate = document.getElementById("dueDate");
-    const category = document.getElementById("category");
-    function checkInputs() {
-        if (title.value.trim() === "" || dueDate.value.trim() === "" || category.value.trim() === "") {
-            submitButton.disabled = true;
-        } else { submitButton.disabled = false; }
-    }
-    title.addEventListener("input", checkInputs);
-    dueDate.addEventListener("input", checkInputs);
-    category.addEventListener("input", checkInputs);
-    checkInputs();
-});
+    if (title.value === "" || dueDate.value === "" || isCategorySelected == false) {
+        submitButton.disabled = true;
+    } else { submitButton.disabled = false; }
+}
 
 /**
  * get contacts from the backend
@@ -306,6 +304,20 @@ function toggleSelectable() {
 };
 
 /**
+ * Toggles the visibility of the category dropdown
+ */
+function toggleCategory() {
+    let dropdownCategoryIcon = document.getElementById('dropwdown-category-icon');
+    let selectableRef = document.getElementById("category-list");
+    if (selectableRef.classList.contains('dnone')) {
+        dropdownCategoryIcon.src = `../assets/icons/dropdown-open.png`
+    } else {
+        dropdownCategoryIcon.src = `../assets/icons/dropdown-closed.png`
+    };
+    selectableRef.classList.toggle("dnone");
+};
+
+/**
  * Finds the contact by full name and sets their background color on the matching DOM element.
  * 
  * @param {string} fullname - current name
@@ -347,10 +359,10 @@ function addMember(index, shortName, userNameAssigned) {
  * @param {element} checked - the element for which the check-img is toggled
  */
 function removeMember(memberIndex, bgcolor, checked) {
-        assignedMembers.splice(memberIndex, 1);
-        bgcolor.classList.remove('assigned-bgcolor');
-        checked.src = `../assets/icons/checkbox.png`
-        renderMembersForTask();
+    assignedMembers.splice(memberIndex, 1);
+    bgcolor.classList.remove('assigned-bgcolor');
+    checked.src = `../assets/icons/checkbox.png`
+    renderMembersForTask();
 }
 
 /**
@@ -361,10 +373,10 @@ function removeMember(memberIndex, bgcolor, checked) {
  * @param {string} userNameAssigned - The name of the user to add or remove from the task. 
  */
 function assignMember(bgcolor, checked, userNameAssigned) {
-        assignedMembers.push(userNameAssigned);
-        bgcolor.classList.add('assigned-bgcolor');
-        checked.src = `../assets/icons/checkbox-checked-white.png`
-        renderMembersForTask();
+    assignedMembers.push(userNameAssigned);
+    bgcolor.classList.add('assigned-bgcolor');
+    checked.src = `../assets/icons/checkbox-checked-white.png`
+    renderMembersForTask();
 }
 
 /**

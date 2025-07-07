@@ -89,15 +89,15 @@
                     </div>
                     <article class="flex-column subtask-main-container">
                         <p>Category<span>*</span></p>
-                        <div class="subtask-container category-container" id="category">
-                            Select Task Category
+                        <div onclick="checkCategory(), toggleCategory(), event.stopPropagation()" class="subtask-container category-container" id="category">
+                            <p id="selected-Category">Select Task Category</p>
                             <div class="dropdown-img-container">
-                                <img class="category-img" id="dropwdown-icon" src="../assets/icons/dropdown-closed.png" alt="">
+                                <img class="category-img" id="dropwdown-category-icon" src="../assets/icons/dropdown-closed.png" alt="">
                             </div>
                         </div>
-                        <ul class="category-list">
-                            <li>Technical Task</li>
-                            <li>User Story</li>
+                        <ul id="category-list" class="category-list dnone">
+                            <li onclick="selectCategory('Technical Task')">Technical Task</li>
+                            <li onclick="selectCategory('User Story')">User Story</li>
                         </ul>
                         <div class="warning-container">
                             <span class="warning d_none" id="warning-category">This field is required</span>

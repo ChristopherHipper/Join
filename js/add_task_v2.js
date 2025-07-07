@@ -14,6 +14,7 @@ function checkTitle() {
         title.classList.remove('red-border');
         warningText.classList.add('d_none');
     };
+    checkInputs()
 };
 
 /**
@@ -32,6 +33,7 @@ function checkDate() {
         date.classList.remove('red-border');
         warningText.classList.add('d_none');
     };
+    checkInputs()
 };
 
 /**
@@ -53,8 +55,10 @@ function getRedBorder(input) {
  */
 function checkCategory() {
     let category = document.getElementById('category');
+    let categoryInput = document.getElementById('selected-Category');
     let warningText = document.getElementById('warning-category');
-    if (category.value === '') {
+    let selectableRef = document.getElementById("category-list");
+    if (categoryInput.innerHTML === 'Select Task Category' && !selectableRef.classList.contains('dnone') ){
         getRedBorder(category);
     } else {
         category.classList.remove('red-border');
@@ -130,7 +134,7 @@ function removeSubtask(index) {
  * @param {number} index - The index of the subtask to edit in the subtask array.
  */
 function editSubtask(index) {
-    let currentListItem = document.getElementById("subtask-"+index);
+    let currentListItem = document.getElementById("subtask-" + index);
     currentListItem.innerHTML = "";
     currentListItem.innerHTML = editSubtaskTemplate(index);
 };
@@ -157,6 +161,22 @@ document.addEventListener('click', e => {
         assignedRef.classList.add('dnone');
         document.getElementById('dropwdown-icon').src = `../assets/icons/dropdown-closed.png`
     };
+});
+
+/**
+ * closes the dropdown list of category
+ * by clicking outside the list or at the close button
+ */
+document.addEventListener('click', e => {
+    let categoryInput = document.getElementById('category');
+    let categoryRef = document.getElementById('category-list');
+    checkCategory()
+    if (!categoryRef.contains(e.target) && e.target !== categoryInput) {
+        categoryRef.classList.add('dnone');
+        document.getElementById('dropwdown-category-icon').src = `../assets/icons/dropdown-closed.png`
+        
+    };
+    
 });
 
 /**
@@ -191,4 +211,42 @@ function filterAssigned(event) {
         const content = contact.innerText.toLowerCase();
         contact.style.display = content.includes(searchTerm) ? 'flex' : 'none';
     });
+};
+
+function selectCategory(category) {
+    const categoryRef = document.getElementById('selected-Category');
+    categoryRef.innerHTML = category;
+    checkCategory();
+    let categoryContainerRef = document.getElementById('category-list');
+    categoryContainerRef.classList.add('dnone');
+    document.getElementById('dropwdown-category-icon').src = `../assets/icons/dropdown-closed.png`
+    isCategorySelected = true
+    checkInputs()
+};
+
+function initValidation() {
+    const submitButton = document.getElementById("creatTask");
+    const title = document.getElementById("title");
+    const dueDate = document.getElementById("dueDate");
+    const category = document.getElementById("selected-Category");
+    if (!title || !dueDate || !category || !submitButton) {
+        console.warn("No formula elements found."); return; };
+    if (validationInterval !== null) return;
+    validationInterval = setInterval(() => {
+        const isValid =
+            title.value.trim() !== "" &&
+            dueDate.value.trim() !== "" &&
+            category.innerHTML !== "Select Task Category";
+        submitButton.disabled = !isValid; }, 200);
+};
+
+/**
+ * Stops the ongoing form validation interval if it is running.
+ * This prevents further automatic checks of input fields.
+ */
+function stopValidation() {
+    if (validationInterval !== null) {
+        clearInterval(validationInterval);
+        validationInterval = null;
+    };
 };

@@ -158,7 +158,7 @@ textarea {
 }
 
 .input-text:focus,
-.subtask-container:focus-within {
+.subtask-container:focus-within, .category-container:focus-within {
   border: 1px solid #29ABE2 !important;
   outline: none;
 }
