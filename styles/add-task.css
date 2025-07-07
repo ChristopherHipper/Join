@@ -262,6 +262,37 @@ textarea {
   height: 620px;
 }
 
+.subtask-main-container{
+  position: relative;
+}
+
+.category-list{
+  position: absolute;
+  width: 100%;
+  top: 92px;
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid #D1D1D1;
+  list-style-type: none;
+  font-size: 20px;
+  padding-left: 0;
+}
+
+.category-list li{
+  padding-top: 10px;
+  padding-bottom: 6px;
+  padding-right: 6px;
+  padding-left: 12px;
+  border-radius: 10px;
+  width: 100%;
+  cursor: pointer;
+  height: 48px;
+}
+
+.category-list li:hover{
+  background-color: #D1D1D1;
+}
+
 .selectable-assigned {
   position: absolute;
   width: 100%;
