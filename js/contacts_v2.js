@@ -122,7 +122,8 @@ async function saveContact(key, contact) {
       body: JSON.stringify(contact)
     });
     if (!response.ok) {
-      return;}
+      return;
+    }
     finishContactCreation();
   } catch (error) { }
 }
@@ -172,7 +173,9 @@ if (contactsSlider && sliderTrigger) {
       !sliderTrigger.contains(event.target);
     if (isClickOutside && !contactsSlider.classList.contains("dnone")) {
       contactsSlider.classList.add("dnone");
-    }});}
+    }
+  });
+}
 
 /**
  * Deletes the currently selected contact.
@@ -236,5 +239,19 @@ async function removeContactFromTasks(name) {
       method: "DELETE",
     });
 
+  }
+}
+
+/**
+ * Retrieves the name property from the details of a contact with the given ID.
+ *
+ * @param {string} name - The ID of the contact to search for.
+ * @returns {string|undefined} The name of the contact if found, otherwise undefined.
+ */
+function generateName(name) {
+  for (let [id, details] of allContacts) {
+    if (id === name) {
+      return details.name
+    }
   }
 }

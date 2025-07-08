@@ -1,5 +1,6 @@
 let taskContactIsIncluded = [];
 let currentEditName = "";
+let allContacts = [];
 
 /**
  * Regular expression to validate email addresses.
@@ -68,10 +69,10 @@ function highlightLink() {
 function renderContacts(contactsData) {
   const list = document.getElementById("contactList");
   list.innerHTML = "";
-  const contacts = Object.entries(contactsData);
-  contacts.sort((a, b) => a[1].name.localeCompare(b[1].name));
+  allContacts = Object.entries(contactsData);
+  allContacts.sort((a, b) => a[1].name.localeCompare(b[1].name));
   let currentGroup = "";
-  contacts.forEach(([key, contact]) => {
+  allContacts.forEach(([key, contact]) => {
     const firstLetter = contact.name.charAt(0).toUpperCase();
     if (firstLetter !== currentGroup) {
       currentGroup = firstLetter;
@@ -367,7 +368,7 @@ async function deleteContact(key) {
  * @returns {string} - Sanitized key.
  */
 function generateKeyFromName(name) {
-  return name.toUpperCase().replace(/[^a-z0-9]/g, "_");
+  return name.toLowerCase().replace(/[^a-z0-9]/g, "_");
 }
 
 /**
