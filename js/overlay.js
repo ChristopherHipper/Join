@@ -331,6 +331,12 @@ function finalizeAddTaskSetup() {
     initValidation();
 }
 
+/**
+ * Determines if the current device is a real iOS device (iPhone, iPad, or iPod),
+ * excluding Mac devices with touch support (such as Macs with Apple Silicon).
+ *
+ * @returns {boolean} True if the device is a real iOS device, false otherwise.
+ */
 function isRealIOS() {
   const ua = navigator.userAgent || navigator.vendor || window.opera;
   const isiOS = /iPad|iPhone|iPod/.test(ua);
@@ -339,6 +345,11 @@ function isRealIOS() {
   return isiOS && isTouch && isNotMac;
 }
 
+
+/**
+ * Adds extra bottom padding to the element with the class 'cardOverlay' if the device is a real iOS device.
+ * This is typically used to accommodate UI elements like the iOS home indicator.
+ */
 function setIOSPaddingIfNeeded() {
   if (isRealIOS()) {
     const el = document.querySelector('.cardOverlay');
@@ -347,3 +358,35 @@ function setIOSPaddingIfNeeded() {
     }
   }
 }
+
+/**
+ * Handles the selection of a category in the UI.
+ * Updates the displayed selected category, hides the category list,
+ * changes the dropdown icon, and triggers input validation.
+ *
+ * @param {string} category - The name of the category selected by the user.
+ */
+function selectCategory(category) {
+    const categoryRef = document.getElementById('selected-Category');
+    categoryRef.innerHTML = category;
+    checkCategory();
+    let categoryContainerRef = document.getElementById('category-list');
+    categoryContainerRef.classList.add('dnone');
+    document.getElementById('dropwdown-category-icon').src = `../assets/icons/dropdown-closed.png`
+    isCategorySelected = true
+    checkInputs()
+};
+
+/**
+ * Toggles the visibility of the category dropdown
+ */
+function toggleCategory() {
+    let dropdownCategoryIcon = document.getElementById('dropwdown-category-icon');
+    let selectableRef = document.getElementById("category-list");
+    if (selectableRef.classList.contains('dnone')) {
+        dropdownCategoryIcon.src = `../assets/icons/dropdown-open.png`
+    } else {
+        dropdownCategoryIcon.src = `../assets/icons/dropdown-closed.png`
+    };
+    selectableRef.classList.toggle("dnone");
+};

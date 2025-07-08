@@ -213,6 +213,13 @@ function filterAssigned(event) {
     });
 };
 
+/**
+ * Handles the selection of a category in the UI.
+ * Updates the displayed selected category, hides the category list,
+ * changes the dropdown icon, and triggers input validation.
+ *
+ * @param {string} category - The name of the category selected by the user.
+ */
 function selectCategory(category) {
     const categoryRef = document.getElementById('selected-Category');
     categoryRef.innerHTML = category;
@@ -224,6 +231,16 @@ function selectCategory(category) {
     checkInputs()
 };
 
+/**
+ * Initializes form validation for the task creation form.
+ * Periodically checks if the required fields (title, due date, and category) are filled out,
+ * and enables or disables the submit button accordingly.
+ * Prevents multiple intervals from being set.
+ * Logs a warning if any required form elements are missing.
+ *
+ * @function
+ * @returns {void}
+ */
 function initValidation() {
     const submitButton = document.getElementById("creatTask");
     const title = document.getElementById("title");

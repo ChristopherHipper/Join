@@ -195,6 +195,12 @@ function contactAddedSuccessfully() {
   }, 4000);
 }
 
+/**
+ * Determines if the current device is a real iOS device (iPhone, iPad, or iPod),
+ * excluding Mac devices with touch support (such as Macs with Apple Silicon).
+ *
+ * @returns {boolean} True if the device is a real iOS device, false otherwise.
+ */
 function isRealIOS() {
   const ua = navigator.userAgent || navigator.vendor || window.opera;
   const isiOS = /iPad|iPhone|iPod/.test(ua);
@@ -203,6 +209,10 @@ function isRealIOS() {
   return isiOS && isTouch && isNotMac;
 }
 
+/**
+ * Adds extra bottom padding to the element with the class 'cardOverlay' if the device is a real iOS device.
+ * This is typically used to accommodate UI elements like the iOS home indicator.
+ */
 if (isRealIOS()) {
   const el = document.querySelector('.contacts-list');
   if (el) {

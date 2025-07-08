@@ -1,4 +1,5 @@
 let subtasksArray = [];
+let isCategorySelected = false;
 
 /**
  * Add new subtask to the subtask list.
@@ -163,19 +164,17 @@ async function pushTask(title, description, dueDate, category, priority, taskInd
 };
 
 /**
- * Enables or disables the submit button based on input field values.
+ * Set the submit button able or disabled.
  * 
- * Checks whether the `title`, `dueDate`, and `category` fields are non-empty.
- * If any of the fields are empty , disables the `submitButton`.
- * Otherwise, enables the button.
- * 
- * @param {HTMLInputElement} title - Input field for the task title.
- * @param {HTMLInputElement} dueDate - Input field for the due date.
- * @param {HTMLInputElement} category - Input field for the category.
- * @param {HTMLButtonElement} submitButton - The button to enable/disable.
+ * selects the title, due date, and category input elements.
+ * defines a `checkInputs()` function that ables the submit button
+ * if the values aren't empty
  */
-function checkInputs(title, dueDate, category, submitButton) {
-    if (title.value.trim() === "" || dueDate.value.trim() === "" || category.value.trim() === "") {
+function checkInputs() {
+    const submitButton = document.getElementById("creatTask");
+    const title = document.getElementById("title");
+    const dueDate = document.getElementById("dueDate");
+    if (title.value === "" || dueDate.value === "" || isCategorySelected == false) {
         submitButton.disabled = true;
     } else { submitButton.disabled = false; }
 }

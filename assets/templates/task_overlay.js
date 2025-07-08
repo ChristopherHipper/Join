@@ -141,7 +141,7 @@ function editTaskOverlayTemplate(currentTask) {
             </div>`
 };
 
-function subtaskEditTemplate(index,arr) {
+function subtaskEditTemplate(index, arr) {
     return `<div id="subtask-${index}">
                 <div ondblclick="editSubtask(${index})" onmouseover="openSubtaskEdit(${index})" onmouseout="closeSubtaskEdit(${index})"  class="subtask-list-container">
                     <li>${arr[index].title}</li>
@@ -228,14 +228,18 @@ function addTaskBoardTemplate() {
                             <div class="memberForTask" id="memberForTask"></div>
                         </div>
                     </div>
-                    <article class="flex-column">
-                        <label for="category">Category<span>*</span></label>
-                        <select onfocusout="checkCategory()" id="category" name="selection-category" class="input-text"
-                            required>
-                            <option value="" disabled selected hidden>Select task category</option>
-                            <option value="Technical Task">Technical Task</option>
-                            <option value="User Story">User Story</option>
-                        </select>
+                    <article class="flex-column subtask-main-container">
+                        <p>Category<span>*</span></p>
+                        <div onclick="checkCategory(), toggleCategory(), event.stopPropagation()" class="subtask-container category-container" id="category">
+                            <p id="selected-Category">Select Task Category</p>
+                            <div class="dropdown-img-container">
+                                <img class="category-img" id="dropwdown-category-icon" src="../assets/icons/dropdown-closed.png" alt="">
+                            </div>
+                        </div>
+                        <ul id="category-list" class="category-list dnone">
+                            <li onclick="selectCategory('Technical Task')">Technical Task</li>
+                            <li onclick="selectCategory('User Story')">User Story</li>
+                        </ul>
                         <div class="warning-container">
                             <span class="warning d_none" id="warning-category">This field is required</span>
                         </div>

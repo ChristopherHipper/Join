@@ -42,7 +42,7 @@ function addNewToDO() {
     title = document.getElementById("title").value;
     description = document.getElementById("description").value;
     dueDate = document.getElementById("dueDate").value;
-    category = document.getElementById("category").value;
+    category = document.getElementById("selected-Category").innerHTML;
     pushTask(title, description, dueDate, category, priority);
     cancelTask();
     succeedRegistration();

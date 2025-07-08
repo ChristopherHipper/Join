@@ -7,7 +7,7 @@ function initValidation() {
     const submitButton = document.getElementById("creatTask");
     const title = document.getElementById("title");
     const dueDate = document.getElementById("dueDate");
-    const category = document.getElementById("category");
+    const category = document.getElementById("selected-Category");
     if (!title || !dueDate || !category || !submitButton) {
         console.warn("No formula elements found."); return; };
     if (validationInterval !== null) return;
@@ -15,7 +15,7 @@ function initValidation() {
         const isValid =
             title.value.trim() !== "" &&
             dueDate.value.trim() !== "" &&
-            category.value.trim() !== "";
+            category.innerHTML !== "Select Task Category";
         submitButton.disabled = !isValid; }, 200);
 };
 
@@ -105,8 +105,10 @@ function getRedBorder(input) {
  */
 function checkCategory() {
     let category = document.getElementById('category');
+    let categoryInput = document.getElementById('selected-Category');
     let warningText = document.getElementById('warning-category');
-    if (category.value === '') {
+    let selectableRef = document.getElementById("category-list");
+    if (categoryInput.innerHTML === 'Select Task Category' && !selectableRef.classList.contains('dnone') ){
         getRedBorder(category);
     } else {
         category.classList.remove('red-border');
@@ -139,7 +141,7 @@ function checkButtonDisabillity() {
     const title = document.getElementById("title");
     const dueDate = document.getElementById("dueDate");
     const category = document.getElementById("category");
-    checkInputs(title, dueDate, category, submitButton);
+    checkInputs(submitButton);
 };
 
 /**
@@ -149,7 +151,7 @@ async function addNewToDO() {
     title = document.getElementById("title").value;
     description = document.getElementById("description").value;
     dueDate = document.getElementById("dueDate").value;
-    category = document.getElementById("category").value;
+    category = document.getElementById("selected-Category").innerHTML;
     await pushTaskBoard(title, description, dueDate, category, priority);
     cancelTask();
     renderTasksOnly();
