@@ -276,13 +276,17 @@ function getAssignedToInitials(taskIndex, contacts, full) {
     if (tasks[taskIndex].assigned_to) {
         for (const [key, value] of Object.entries(tasks[taskIndex].assigned_to)) {
             let nameValue = value;
-            assignedTo.push(`${nameValue}`);
-        };
+            if (nameValue == null) {
+                continue;
+            } else {
+                assignedTo.push(`${nameValue}`);
+            }
+        }
         establishInitials(taskIndex, contacts, full);
         assignedTo = [];
     } else {
-        return
-    };
+        return;
+    }
 }
 
 /**

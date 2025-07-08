@@ -238,7 +238,11 @@ function getAssignedMembers(currentTask) {
     if (tasks[currentTask].assigned_to) {
         for (const [key, value] of Object.entries(tasks[currentTask].assigned_to)) {
             let nameValue = value;
-            assignedMembers.push(`${nameValue}`);
+            if (nameValue == null) {
+                continue
+            } else {
+                assignedMembers.push(`${nameValue}`);
+            }
         };
         return assignedMembers;
     } else {

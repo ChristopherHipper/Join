@@ -78,7 +78,8 @@ function renderContacts(contactsData) {
       appendGroupHeader(list, currentGroup);
     }
     appendContactElement(list, key, contact);
-  });}
+  });
+}
 
 /**
  * Appends a contact element to the contact list.
@@ -189,14 +190,16 @@ async function editContact(key, contactName) {
     currentEditName = contactName;
     const contact = await fetchContactByKey(key);
     if (!contact) {
-      closeEditContact(); return;}
+      closeEditContact(); return;
+    }
     const { name, mail, phone_number: phone } = contact;
     const color = await ensureContactColor(key, contact.color);
     fillEditForm(name || "", mail || "", phone || "", color);
     currentEditKey = key;
     showEditOverlay(name || "", color);
   } catch (error) { }
-  toggleContactsSlider();}
+  toggleContactsSlider();
+}
 
 /**
  * Filters all tasks and finds those assigned to the given contact name.
@@ -278,11 +281,14 @@ async function CheckEditedContact() {
   const phone = document.getElementById("editPhone").value;
   const color = document.getElementById("editAvatar").style.background || getRandomColor();
   if (!name || !mail || !phone) {
-    alertEdit(); return;}
+    alertEdit(); return;
+  }
   if (!emailPattern.test(mail)) {
-    alertValidMailEdit(); return;}
+    alertValidMailEdit(); return;
+  }
   if (!digitPattern.test(phone)) {
-    alertValidNumberEdit(); return;}
+    alertValidNumberEdit(); return;
+  }
   await combineFullContact(name, mail, phone, color)
 }
 
@@ -319,7 +325,8 @@ async function updateTasks(name) {
       },
       body: JSON.stringify(name)
     });
-  }}
+  }
+}
 
 /**
  * Saves the edited contact to the database.
@@ -344,10 +351,14 @@ async function saveEditedContact(updatedContact) {
  */
 async function deleteContact(key) {
   try {
+    let taskName = generateName(key)
+    findContactTasks(taskName);
+    removeContactFromTasks(taskName);
     await fetch(`${BASE_URL}contacts/${key}.json`, { method: "DELETE" });
     document.getElementById("contactView").innerHTML = errorTamplate();
     await fetchContacts();
   } catch (error) { }
+  
 }
 
 /**
@@ -356,7 +367,7 @@ async function deleteContact(key) {
  * @returns {string} - Sanitized key.
  */
 function generateKeyFromName(name) {
-  return name.toLowerCase().replace(/[^a-z0-9]/g, "_");
+  return name.toUpperCase().replace(/[^a-z0-9]/g, "_");
 }
 
 /**
@@ -367,11 +378,14 @@ async function createContact() {
   const mail = getInputValue("contactEmail");
   const phone = getInputValue("contactPhone");
   if (!name || !mail || !phone) {
-    alert(); return;}
+    alert(); return;
+  }
   if (!emailPattern.test(mail)) {
-    alertValidMail(); return;}
+    alertValidMail(); return;
+  }
   if (!digitPattern.test(phone)) {
-    alertValidNumber(); return;}
+    alertValidNumber(); return;
+  }
   createNewContact(name, mail, phone);
 }
 

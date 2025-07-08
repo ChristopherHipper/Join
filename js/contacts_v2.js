@@ -219,3 +219,22 @@ if (isRealIOS()) {
     el.style.paddingBottom = '80px';
   }
 }
+
+/**
+ * Updates all tasks assigned to a specific contact name by replacing the contact
+ * name in the `assigned_to` array with a new name.
+ *
+ * The tasks to be updated must be stored in the global variable `taskContactIsIncluded`.
+ *
+ * @param {string} name - The new name to assign in the `assigned_to` array.
+ */
+async function removeContactFromTasks(name) {
+  for (let index = 0; index < taskContactIsIncluded.length; index++) {
+    let currentContactIndex = taskContactIsIncluded[index].assigned_to.indexOf(name)
+    let currentTaskPath = BASE_URL + "tasks/" + taskContactIsIncluded[index].firebaseKey + "/assigned_to/" + currentContactIndex;
+    let response = await fetch(currentTaskPath + ".json", {
+      method: "DELETE",
+    });
+
+  }
+}
