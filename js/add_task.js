@@ -1,7 +1,6 @@
 let priority = "medium"
 const submitButton = document.getElementById("creatTask");
 let assignedMembers = [];
-dueDate.min = new Date().toISOString().split("T")[0];
 let subtaskArr = [];
 let isCategorySelected = false;
 let validationInterval = null;
@@ -20,6 +19,7 @@ function startForm() {
     fetchInit();
     highlightLink();
     initValidation()
+    minDate();
 };
 
 /**
@@ -41,7 +41,7 @@ function highlightLink() {
 function addNewToDO() {
     title = document.getElementById("title").value;
     description = document.getElementById("description").value;
-    dueDate = document.getElementById("dueDate").value;
+    dueDate = document.getElementById("datepicker").value;
     category = document.getElementById("selected-Category").innerHTML;
     pushTask(title, description, dueDate, category, priority);
     cancelTask();
@@ -62,7 +62,7 @@ function addNewToDO() {
 function cancelTask() {
     document.getElementById("title").value = "";
     document.getElementById("description").value = "";
-    document.getElementById("dueDate").value = "";
+    document.getElementById("datepicker").value = "";
     document.getElementById('category').value = "";
     document.getElementById("memberForTask").innerHTML = "";
     document.getElementById("subtask").value = "";
@@ -230,7 +230,7 @@ function getSubTasks() {
  */
 function checkInputs() {
     const title = document.getElementById("title");
-    const dueDate = document.getElementById("dueDate");
+    const dueDate = document.getElementById("datepicker");
     if (title.value === "" || dueDate.value === "" || isCategorySelected == false) {
         submitButton.disabled = true;
     } else { submitButton.disabled = false; }
@@ -405,4 +405,15 @@ function renderMembersForTask() {
 document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('assignee-input');
     searchInput.addEventListener('input', filterAssigned);
+});
+
+flatpickr("#datepicker", {
+  locale: flatpickr.l10ns.de,
+  dateFormat: "d.m.Y",
+  minDate: "today",
+  altInput: false,
+  altFormat: "d.m.Y",
+  onChange: function () {
+    checkDate();
+  }
 });

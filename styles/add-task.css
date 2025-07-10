@@ -167,6 +167,10 @@ textarea {
   max-width: 440px;
 }
 
+.activeDate{
+  background-color: white !important;
+}
+
 .second-container {
   width: 440px;
 }

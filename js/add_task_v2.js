@@ -25,16 +25,16 @@ function checkTitle() {
  * the red border and hides the warning.
  */
 function checkDate() {
-    let date = document.getElementById('dueDate');
-    let warningText = document.getElementById('warning-dueDate');
-    if (date.value === '') {
-        getRedBorder(date);
-    } else {
-        date.classList.remove('red-border');
-        warningText.classList.add('d_none');
-    };
-    checkInputs()
-};
+  const input = document.getElementById('datepicker');
+  const warningText = document.getElementById('warning-datepicker');
+  if (input.value === '') {
+    getRedBorder(input);
+  } else {
+    input.classList.remove('red-border');
+    warningText.classList.add('d_none');
+  }
+  checkInputs();
+}
 
 /**
  * Function to get the red border to each input's
@@ -244,7 +244,7 @@ function selectCategory(category) {
 function initValidation() {
     const submitButton = document.getElementById("creatTask");
     const title = document.getElementById("title");
-    const dueDate = document.getElementById("dueDate");
+    const dueDate = document.getElementById("datepicker");
     const category = document.getElementById("selected-Category");
     if (!title || !dueDate || !category || !submitButton) {
         console.warn("No formula elements found."); return; };
