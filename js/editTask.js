@@ -18,8 +18,18 @@ function editTaskOverlay(currentTask) {
     renderMembersForTask();
     getContacts();
     getSubtasksEdit(currentTask);
-    dueDateEdit.min = new Date().toISOString().split("T")[0];
     initValidationEdit();
+    datepickerInstance = flatpickr("#datepicker", {
+        locale: flatpickr.l10ns.de,
+        dateFormat: "d.m.Y",
+        minDate: "today",
+        altInput: false,
+        altFormat: "d.m.Y",
+    });
+
+    document.getElementById("calender-icon-trigger").addEventListener("click", () => {
+        datepickerInstance.open();
+    });
 };
 
 /**
@@ -30,23 +40,25 @@ function editTaskOverlay(currentTask) {
 function initValidationEdit() {
     const submitButton = document.getElementById("creatTaskEdit");
     const title = document.getElementById("titleEdit");
-    const dueDate = document.getElementById("dueDateEdit");
+    const dueDate = document.getElementById("datepicker");
     const category = document.getElementById("categoryEdit");
     if (!title || !dueDate || !category || !submitButton) {
-        console.warn("No formula found."); return; }
-     if (validationInterval !== null) return;
+        console.warn("No formula found."); return;
+    }
+    if (validationInterval !== null) return;
     validationInterval = setInterval(() => {
         const isValid =
             title.value.trim() !== "" &&
             dueDate.value.trim() !== "" &&
             category.value.trim() !== "";
-        submitButton.disabled = !isValid; }, 200)
+        submitButton.disabled = !isValid;
+    }, 200)
 };
 
 function establishVariablesForValidation() {
     submitButton = document.getElementById("creatTaskEdit");
     title = document.getElementById("titleEdit");
-    dueDate = document.getElementById("dueDateEdit");
+    dueDate = document.getElementById("datepicker");
     category = document.getElementById("categoryEdit");
 }
 
@@ -291,10 +303,10 @@ function addMember(index, shortName, userName) {
  * @param {element} checked - the element for which the check-img is toggled
  */
 function removeMember(index, bgcolor, checked) {
-        assignedMembers.splice(index, 1);
-        bgcolor.classList.remove('assigned-bgcolor');
-        checked.src = `../assets/icons/checkbox.png`
-        renderMembersForTask();
+    assignedMembers.splice(index, 1);
+    bgcolor.classList.remove('assigned-bgcolor');
+    checked.src = `../assets/icons/checkbox.png`
+    renderMembersForTask();
 }
 
 /**
@@ -305,10 +317,10 @@ function removeMember(index, bgcolor, checked) {
  * @param {string} userName - The name of the user to add or remove from the task. 
  */
 function assignMember(bgcolor, checked, userName) {
-        assignedMembers.push(userName);
-        bgcolor.classList.add('assigned-bgcolor');
-        checked.src = `../assets/icons/checkbox-checked-white.png`
-        renderMembersForTask();
+    assignedMembers.push(userName);
+    bgcolor.classList.add('assigned-bgcolor');
+    checked.src = `../assets/icons/checkbox-checked-white.png`
+    renderMembersForTask();
 }
 
 /**

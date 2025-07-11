@@ -132,7 +132,7 @@ function getSubtasksEdit(taskIndex) {
 async function editToDo(taskIndex) {
     title = document.getElementById("titleEdit").value;
     description = document.getElementById("description").value;
-    dueDate = document.getElementById("dueDateEdit").value;
+    dueDate = document.getElementById("datepicker").value;
     category = document.getElementById("categoryEdit").value;
     await pushTask(title, description, dueDate, category, priority, taskIndex);
     closeOverlay();
@@ -173,7 +173,7 @@ async function pushTask(title, description, dueDate, category, priority, taskInd
 function checkInputs() {
     const submitButton = document.getElementById("creatTask");
     const title = document.getElementById("title");
-    const dueDate = document.getElementById("dueDate");
+    const dueDate = document.getElementById("datepicker");
     if (title.value === "" || dueDate.value === "" || isCategorySelected == false) {
         submitButton.disabled = true;
     } else { submitButton.disabled = false; }

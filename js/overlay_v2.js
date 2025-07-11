@@ -6,7 +6,7 @@
 function initValidation() {
     const submitButton = document.getElementById("creatTask");
     const title = document.getElementById("title");
-    const dueDate = document.getElementById("dueDate");
+    const dueDate = document.getElementById("datepicker");
     const category = document.getElementById("selected-Category");
     if (!title || !dueDate || !category || !submitButton) {
         console.warn("No formula elements found."); return; };
@@ -50,7 +50,7 @@ function cancelTask() {
     const submitButton = document.getElementById("creatTask");
     document.getElementById("title").value = "";
     document.getElementById("description").value = "";
-    document.getElementById("dueDate").value = "";
+    document.getElementById("datepicker").value = "";
     document.getElementById('category').value = "";
     document.getElementById("memberForTask").innerHTML = "";
     document.getElementById("subtask").value = "";
@@ -78,15 +78,16 @@ function checkTitle() {
  * This function checks the input of the add task dueDate onfocusout
  */
 function checkDate() {
-    let date = document.getElementById('dueDate');
-    let warningText = document.getElementById('warning-dueDate');
-    if (date.value === '') {
-        getRedBorder(date);
-    } else {
-        date.classList.remove('red-border');
-        warningText.classList.add('d_none');
-    };
-};
+  const input = document.getElementById('datepicker');
+  const warningText = document.getElementById('warning-datepicker');
+  if (input.value === '') {
+    getRedBorder(input);
+  } else {
+    input.classList.remove('red-border');
+    warningText.classList.add('d_none');
+  }
+  checkInputs();
+}
 
 /**
  * This function creates a warning message and a red boarder around an input field if there
@@ -139,7 +140,7 @@ function checkSubtask() {
 function checkButtonDisabillity() {
     const submitButton = document.getElementById("creatTask");
     const title = document.getElementById("title");
-    const dueDate = document.getElementById("dueDate");
+    const dueDate = document.getElementById("datepicker");
     const category = document.getElementById("category");
     checkInputs(submitButton);
 };
@@ -150,7 +151,7 @@ function checkButtonDisabillity() {
 async function addNewToDO() {
     title = document.getElementById("title").value;
     description = document.getElementById("description").value;
-    dueDate = document.getElementById("dueDate").value;
+    dueDate = document.getElementById("datepicker").value;
     category = document.getElementById("selected-Category").innerHTML;
     await pushTaskBoard(title, description, dueDate, category, priority);
     cancelTask();
@@ -215,3 +216,4 @@ function toggleOverlayTask() {
         document.documentElement.classList.remove('stopScrolling')
     }
 };
+

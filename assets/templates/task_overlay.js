@@ -78,7 +78,13 @@ function editTaskOverlayTemplate(currentTask) {
                             <p>Description</p>
                             <textarea class="input-text" id="description" rows="6" cols="50">${tasks[currentTask].description}</textarea>
                             <p>Due date</p>
-                            <input value="${tasks[currentTask].date}" type="date" required class="input-text date-input" id="dueDateEdit">
+                            <div class="date-container">
+                                <input type="text" class="input-text date-input activeDate"
+                                    id="datepicker" placeholder="dd/mm/yyyy" autocomplete="off" min="" value="${tasks[currentTask].date.slice(0, 10).split('-').reverse().join('/')}">
+                                <div id="calender-icon-trigger" class="calender-icon-container">
+                                    <img src="../assets/icons/calender.png" alt="calender-icon">
+                                </div>
+                            </div>
                             <p>Priority</p>
                             <div class="flex-center flex-gap">
                                 <div class="selectable" id="urgent" onclick="addCss('urgent')">
@@ -188,9 +194,16 @@ function addTaskBoardTemplate() {
                     </article>
                     <article>
                         <p>Due date<span>*</span></p>
-                        <input onfocusout="checkDate()" type="date" required class="input-text date-input" id="dueDate">
+                        <div class="date-container">
+                            <input onfocusout="checkDate()" type="text" class="input-text date-input activeDate"
+                                id="datepicker" placeholder="dd/mm/yyyy" autocomplete="off" min="">
+                            <div id="calender-icon-trigger" class="calender-icon-container">
+                                <img src="../assets/icons/calender.png" alt="calender-icon">
+                            </div>
+                        </div>
+
                         <div class="warning-container">
-                            <span class="warning d_none" id="warning-dueDate">This field is required</span>
+                            <span class="warning d_none" id="warning-datepicker">This field is required</span>
                         </div>
                     </article>
                 </div>

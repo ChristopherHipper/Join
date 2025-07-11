@@ -3,6 +3,7 @@ let isAddTaskOverlayOpen = false;
 let isTaskOverlayOpen = false
 let full = true;
 let validationInterval = null;
+let datepickerInstance;
 
 /**
  * This function loads the data for the clicked task overlay
@@ -318,7 +319,20 @@ function setupAddTaskBoard() {
     document.getElementById('addTaskBoardContainer').classList.remove('hidden');
     addTaskBoardRef.classList.remove('closed_addTask');
     addTaskBoardRef.classList.add('open_addTask');
-    dueDate.min = new Date().toISOString().split("T")[0];
+    datepickerInstance = flatpickr("#datepicker", {
+        locale: flatpickr.l10ns.de,
+        dateFormat: "d.m.Y",
+        minDate: "today",
+        altInput: false,
+        altFormat: "d.m.Y",
+        onChange: function () {
+            checkDate();
+        }
+    });
+
+    document.getElementById("calender-icon-trigger").addEventListener("click", () => {
+        datepickerInstance.open();
+    });
 }
 
 /**
@@ -338,11 +352,11 @@ function finalizeAddTaskSetup() {
  * @returns {boolean} True if the device is a real iOS device, false otherwise.
  */
 function isRealIOS() {
-  const ua = navigator.userAgent || navigator.vendor || window.opera;
-  const isiOS = /iPad|iPhone|iPod/.test(ua);
-  const isNotMac = !/Macintosh/.test(ua);
-  const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-  return isiOS && isTouch && isNotMac;
+    const ua = navigator.userAgent || navigator.vendor || window.opera;
+    const isiOS = /iPad|iPhone|iPod/.test(ua);
+    const isNotMac = !/Macintosh/.test(ua);
+    const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    return isiOS && isTouch && isNotMac;
 }
 
 
@@ -351,12 +365,12 @@ function isRealIOS() {
  * This is typically used to accommodate UI elements like the iOS home indicator.
  */
 function setIOSPaddingIfNeeded() {
-  if (isRealIOS()) {
-    const el = document.querySelector('.cardOverlay');
-    if (el) {
-      el.style.paddingBottom = '80px';
+    if (isRealIOS()) {
+        const el = document.querySelector('.cardOverlay');
+        if (el) {
+            el.style.paddingBottom = '80px';
+        }
     }
-  }
 }
 
 /**
