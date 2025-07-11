@@ -412,8 +412,12 @@ const datepicker = flatpickr("#datepicker", {
   minDate: "today",
   altInput: false,
   altFormat: "d.m.Y",
+  allowInput: true,
   onChange: function () {
     checkDate();
+  },
+  onReady: function (_, __, instance) {
+    instance._input.removeAttribute("readonly"); // ✅ iOS Safari Fix für Placeholder
   }
 });
 

@@ -79,8 +79,8 @@ function editTaskOverlayTemplate(currentTask) {
                             <textarea class="input-text" id="description" rows="6" cols="50">${tasks[currentTask].description}</textarea>
                             <p>Due date</p>
                             <div class="date-container">
-                                <input type="text" class="input-text date-input activeDate"
-                                    id="datepicker" placeholder="dd/mm/yyyy" autocomplete="off" min="" value="${tasks[currentTask].date.slice(0, 10).split('-').reverse().join('/')}">
+                                <input class="input-text date-input activeDate"
+                                    id="datepicker" placeholder="dd/mm/yyyy" autocomplete="off" value="${tasks[currentTask].date.slice(0, 10).split('-').reverse().join('/')}">
                                 <div id="calender-icon-trigger" class="calender-icon-container">
                                     <img src="../assets/icons/calender.png" alt="calender-icon">
                                 </div>
@@ -196,7 +196,7 @@ function addTaskBoardTemplate() {
                         <p>Due date<span>*</span></p>
                         <div class="date-container">
                             <input onfocusout="checkDate()" type="text" class="input-text date-input activeDate"
-                                id="datepicker" placeholder="dd/mm/yyyy" autocomplete="off" min="">
+                                id="datepicker" placeholder="dd/mm/yyyy" autocomplete="off">
                             <div id="calender-icon-trigger" class="calender-icon-container">
                                 <img src="../assets/icons/calender.png" alt="calender-icon">
                             </div>

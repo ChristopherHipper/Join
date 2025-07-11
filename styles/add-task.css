@@ -158,7 +158,8 @@ textarea {
 }
 
 .input-text:focus,
-.subtask-container:focus-within, .category-container:focus-within {
+.subtask-container:focus-within,
+.category-container:focus-within {
   border: 1px solid #29ABE2 !important;
   outline: none;
 }
@@ -167,7 +168,7 @@ textarea {
   max-width: 440px;
 }
 
-.activeDate{
+.activeDate {
   background-color: white !important;
 }
 
@@ -266,11 +267,11 @@ textarea {
   height: 620px;
 }
 
-.subtask-main-container{
+.subtask-main-container {
   position: relative;
 }
 
-.category-list{
+.category-list {
   position: absolute;
   width: 100%;
   top: 92px;
@@ -282,7 +283,7 @@ textarea {
   padding-left: 0;
 }
 
-.category-list li{
+.category-list li {
   padding-top: 10px;
   padding-bottom: 6px;
   padding-right: 6px;
@@ -293,7 +294,7 @@ textarea {
   height: 48px;
 }
 
-.category-list li:hover{
+.category-list li:hover {
   background-color: #D1D1D1;
 }
 
@@ -437,7 +438,7 @@ select {
   cursor: pointer;
 }
 
-.date-container{
+.date-container {
   position: relative;
   display: flex;
   align-items: center;
@@ -449,7 +450,16 @@ select {
   cursor: pointer;
 }
 
-.calender-icon-container{
+input.date-input {
+  font-size: 16px;
+}
+
+input::placeholder {
+  color: #aaa;
+  opacity: 1 !important;
+}
+
+.calender-icon-container {
   display: flex;
   align-items: center;
   justify-content: center;

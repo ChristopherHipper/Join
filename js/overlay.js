@@ -325,6 +325,7 @@ function setupAddTaskBoard() {
         minDate: "today",
         altInput: false,
         altFormat: "d.m.Y",
+        allowInput: true,
         onChange: function () {
             checkDate();
         }
