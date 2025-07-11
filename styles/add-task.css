@@ -437,6 +437,33 @@ select {
   cursor: pointer;
 }
 
+.date-container{
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.date-container img {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+}
+
+.calender-icon-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  margin-left: -35px;
+  cursor: pointer;
+}
+
+.calender-icon-container:hover {
+  background-color: #D1D1D1;
+  border-radius: 50%;
+}
+
 li {
   width: 85%;
 }

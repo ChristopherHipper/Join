@@ -49,9 +49,14 @@
                     </article>
                     <article>
                         <p>Due date<span>*</span></p>
-                        <input onfocusout="checkDate()" type="date" class="input-text date-input activeDate" id="datepicker"
-                            placeholder="dd/mm/yyyy" autocomplete="off" min="">
-                        
+                        <div class="date-container">
+                            <input onfocusout="checkDate()" type="text" class="input-text date-input activeDate"
+                                id="datepicker" placeholder="dd/mm/yyyy" autocomplete="off" min="">
+                            <div id="calender-icon-trigger" class="calender-icon-container">
+                                <img src="../assets/icons/calender.png" alt="calender-icon">
+                            </div>
+                        </div>
+
                         <div class="warning-container">
                             <span class="warning d_none" id="warning-datepicker">This field is required</span>
                         </div>

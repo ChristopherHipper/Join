@@ -19,7 +19,6 @@ function startForm() {
     fetchInit();
     highlightLink();
     initValidation()
-    minDate();
 };
 
 /**
@@ -407,7 +406,7 @@ document.addEventListener('DOMContentLoaded', () => {
     searchInput.addEventListener('input', filterAssigned);
 });
 
-flatpickr("#datepicker", {
+const datepicker = flatpickr("#datepicker", {
   locale: flatpickr.l10ns.de,
   dateFormat: "d.m.Y",
   minDate: "today",
@@ -416,4 +415,8 @@ flatpickr("#datepicker", {
   onChange: function () {
     checkDate();
   }
+});
+
+document.getElementById("calender-icon-trigger").addEventListener("click", function () {
+    datepicker.open();
 });

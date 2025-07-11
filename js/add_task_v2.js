@@ -267,3 +267,4 @@ function stopValidation() {
         validationInterval = null;
     };
 };
+
